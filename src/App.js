@@ -104,13 +104,21 @@ const App = () => {
     }
 
     const timeAndMoney = useCallback(processor => {
+        if (password.length >=28) {
+            return {
+                rawTime: 0,
+                humanTime: 'infinity',
+                rawCost: 0,
+                humanCost: 'all world money',
+            }
+        }
         const rawTime = parseInt(combinations / processor.hashPerSecond)
         const rawCost = rawTime / 60 / 60 * processor.costPerHour
         return {
             rawTime,
             humanTime: humanTime(rawTime),
             rawCost,
-            humanCost: new Intl.NumberFormat("en-US", { maximumSignificantDigits: 2 }).format(rawCost),
+            humanCost: '$' + new Intl.NumberFormat("en-US", { maximumSignificantDigits: 2 }).format(rawCost),
         }
     }, [combinations])
 
@@ -164,7 +172,7 @@ const App = () => {
                                     <tr key={processor.title}>
                                         <th>{processor.title}</th>
                                         <td>{timeAndMoney(processor).humanTime}</td>
-                                        <td>${timeAndMoney(processor).humanCost}</td>
+                                        <td>{timeAndMoney(processor).humanCost}</td>
                                     </tr>
                                 ),
                             )
