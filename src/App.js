@@ -104,16 +104,19 @@ const App = () => {
     }
 
     const timeAndMoney = useCallback(processor => {
-        if (password.length >=28) {
-            return {
-                rawTime: 0,
-                humanTime: 'infinity',
-                rawCost: 0,
-                humanCost: 'all world money',
-            }
-        }
+
         const rawTime = parseInt(combinations / processor.hashPerSecond)
         const rawCost = rawTime / 60 / 60 * processor.costPerHour
+
+        if (combinations > 1e+27) {
+            return {
+                rawTime: 0,
+                humanTime: 'Infinity',
+                rawCost: 0,
+                humanCost: 'All world money'
+            }
+        }
+
         return {
             rawTime,
             humanTime: humanTime(rawTime),
