@@ -51,11 +51,44 @@ div.content {
     align-items: center;
 }
 
+.input-wrapper {
+    border: 2px solid #669bbc;
+    padding: 2px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.input-wrapper .error-wrapper {
+    color: #e63946;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    transition: .3s ease all;
+    opacity: 0;
+    transform: translateY(0px);
+}
+
+.input-wrapper.error {
+    border-color: #e63946;
+}
+
+.input-wrapper.error .error-wrapper {
+    transform: translateY(-30px);
+    opacity: 1;
+}
+
 input {
     font-size: 3rem;
     text-align: center;
-    width: calc(100vw - 100px);
     max-width: 980px;
+    width: calc(100vw - 100px);
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+    z-index: 1;
+    position: relative;
 }
 
 th {
@@ -89,6 +122,7 @@ ul {
 ul a {
     color: #999;
 }
+
 ul a:hover {
     text-decoration: none;
 }
@@ -99,22 +133,24 @@ ul a:hover {
     left: 0;
     right: 0;
     overflow: hidden;
-    display:none;
+    display: none;
     background: #fff;
     min-height: 100vh;
-}
-.modal-wrapper.open {
-    display:block;
+    z-index: 2;
 }
 
-.modal{
+.modal-wrapper.open {
+    display: block;
+}
+
+.modal {
     display: flex;
     width: calc(100vw * 4);
     background: #fff;
     transition: .3s ease all;
 }
 
-.modal-wrapper .close{
+.modal-wrapper .close {
     position: absolute;
     right: 40px;
     top: 40px;
@@ -129,24 +165,25 @@ ul a:hover {
     justify-content: center;
     color: #333;
 }
-.modal-wrapper .close:hover{
+
+.modal-wrapper .close:hover {
     border-color: #000;
     color: #000;
 }
 
-.modal .page{
+.modal .page {
     width: calc(100vw - 80px);
     background: #fff;
     text-align: left;
     padding: 0 40px;
 }
 
-.modal .page p{
+.modal .page p {
     font-style: normal;
     opacity: 1;
 }
 
-.modal .page ul{
+.modal .page ul {
     flex-direction: column;
     opacity: .6;
     padding: 20px 0 0;

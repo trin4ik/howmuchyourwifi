@@ -6,4 +6,13 @@
     ul{
         flex-direction: column;
     }
+
+    .input-wrapper {
+       margin-top: 50px;
+        padding: 2px;
+    }
+
+    .input-wrapper.error .error-wrapper {
+        transform: translateY(-50px);
+    }
 }

@@ -51,6 +51,7 @@ const App = () => {
     const [password, setPassword] = useState("")
     const [modalClass, setModalClass] = useState("modal-wrapper")
     const [combinations, setCombinations] = useState(0)
+    const [error, setError] = useState("")
 
     useEffect(() => {
         document.querySelectorAll("a:not(.external)").forEach(link => {
@@ -60,10 +61,12 @@ const App = () => {
     }, [])
 
     useEffect(() => {
-        if (password.length < 8) {
+        if (!/^[\x00-\x7F]{8,63}$/.test(password)) {
             setCombinations(0)
+            setError("Password must be between 8-63 readable ASCII characters")
             return
         }
+        setError("")
         setCombinations(Math.pow(calculateCombinations(), password.length))
         // eslint-disable-next-line
     }, [password])
@@ -111,9 +114,9 @@ const App = () => {
         if (combinations > 1e+27) {
             return {
                 rawTime: 0,
-                humanTime: 'Infinity',
+                humanTime: "Infinity",
                 rawCost: 0,
-                humanCost: 'All world money'
+                humanCost: "All world money",
             }
         }
 
@@ -121,7 +124,7 @@ const App = () => {
             rawTime,
             humanTime: humanTime(rawTime),
             rawCost,
-            humanCost: '$' + new Intl.NumberFormat("en-US", { maximumSignificantDigits: 2 }).format(rawCost),
+            humanCost: "$" + new Intl.NumberFormat("en-US", { maximumSignificantDigits: 2 }).format(rawCost),
         }
     }, [combinations])
 
@@ -159,8 +162,15 @@ const App = () => {
                     not track cookies and the source code of this project is completely open and available to anyone.
                 </h4>
                 <div className={"content"}>
-                    <input type={"password"} placeholder={"password"} value={password}
-                           onChange={e => setPassword(e.target.value)}/>
+                    <div className={["input-wrapper", error && "error"].join(" ")}>
+                        <div className={"error-wrapper"}>{error}</div>
+                        <input
+                            type={"password"}
+                            placeholder={"password"}
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                    </div>
                     <table>
                         <thead>
                         <tr>
