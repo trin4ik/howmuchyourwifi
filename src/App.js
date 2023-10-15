@@ -194,10 +194,14 @@ const App = () => {
             <div className={modalClass}>
                 <a className={"close"} href={"/"}>X</a>
                 <div className={"modal"}>
-                    <div className={"page"} key={"how-it-works"}><HowItWorks/></div>
-                    <div className={"page"} key={"why-its-important"}><WhyItsImportrant/></div>
-                    <div className={"page"} key={"what-can-i-do"}><WhatCanIDo/></div>
-                    <div className={"page"} key={"how-can-i-help"}><HowCanIHelp/></div>
+                    {
+                        pages.map(page => {
+                            if (!page.component) return
+                            return (
+                                <div className={"page"} key={page.url}>{page.component()}</div>
+                            )
+                        })
+                    }
                 </div>
             </div>
         </>
