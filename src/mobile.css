@@ -1,0 +1,9 @@
+@media only screen and (max-width: 600px) {
+    h3{
+        display: none;
+    }
+
+    ul{
+        flex-direction: column;
+    }
+}

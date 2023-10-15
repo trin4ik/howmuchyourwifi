@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+div.app {
+    min-height: calc(100vh - 40px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    margin: auto;
+    max-width: 1000px;
+    flex: 1;
+    background: #fff;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    opacity: .6;
+    font-weight: normal;
+}
+
+h4 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    font-weight: normal;
+}
+
+div.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    font-size: 3rem;
+    text-align: center;
+    width: calc(100vw - 100px);
+    max-width: 980px;
+}
+
+th {
+    white-space: nowrap;
+}
+
+td, th {
+    padding: 10px;
+}
+
+tbody td, tbody th {
+    border-top: 1px solid #666;
+}
+
+p {
+    font-style: italic;
+    opacity: .6;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 50px 10px;
+    margin: 0;
+    height: 0;
+    justify-content: space-around;
+    width: 100%;
+}
+
+ul a {
+    color: #999;
+}
+ul a:hover {
+    text-decoration: none;
+}
+
+.modal-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    display:none;
+    background: #fff;
+    min-height: 100vh;
+}
+.modal-wrapper.open {
+    display:block;
+}
+
+.modal{
+    display: flex;
+    width: calc(100vw * 4);
+    background: #fff;
+    transition: .3s ease all;
+}
+
+.modal-wrapper .close{
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    z-index: 1;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+.modal-wrapper .close:hover{
+    border-color: #000;
+    color: #000;
+}
+
+.modal .page{
+    width: calc(100vw - 80px);
+    background: #fff;
+    text-align: left;
+    padding: 0 40px;
+}
+
+.modal .page p{
+    font-style: normal;
+    opacity: 1;
+}
+
+.modal .page ul{
+    flex-direction: column;
+    opacity: .6;
+    padding: 20px 0 0;
+}
