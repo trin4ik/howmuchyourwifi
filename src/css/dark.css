@@ -1,0 +1,69 @@
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #586F7C;
+    }
+
+    div.app {
+        color: white;
+    }
+
+    .important {
+        background-color: #ca6702;
+    }
+
+    ul a {
+        background: #586F7C22;
+        color: #fff;
+    }
+
+    ul a:hover {
+        background: #586F7C44;
+        color: #fff;
+    }
+
+    .modal .page {
+        background: #282c34;
+    }
+
+    .modal-wrapper {
+        background: #282c34;
+    }
+
+    .modal-wrapper a {
+        color: #999;
+    }
+
+    .modal-wrapper .close {
+        color: #999;
+    }
+
+    .modal-wrapper .close:hover {
+        color: #fff;
+        border-color: #fff;
+    }
+
+    div.app {
+        background: #282c34;
+    }
+
+    .modal .page {
+        color: #fff;
+    }
+
+    .wifi-generator {
+        background: #1d3557;
+    }
+
+    .wifi-generator-wrapper .inputs .input-wrapper button {
+        border: 1px solid #ffffff99;
+        background: #ffffff11;
+    }
+
+    .wifi-generator-wrapper .refresh-icon {
+        fill: #fff;
+    }
+
+    .wifi-generator-wrapper .copy-icon {
+        stroke: #fff;
+    }
+}

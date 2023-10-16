@@ -1,15 +1,21 @@
 import "./index.css"
 import { useEffect, useState, useCallback } from "react"
-import HowCanIHelp from "./HowCanIHelp"
-import HowItWorks from "./HowItWorks"
-import WhatCanIDo from "./WhatCanIDo"
-import WhyItsImportrant from "./WhyItsImportrant"
+import HowCanIHelp from "./modal/HowCanIHelp"
+import HowItWorks from "./modal/HowItWorks"
+import WhatCanIDo from "./modal/WhatCanIDo"
+import WhyItsImportrant from "./modal/WhyItsImportrant"
+import WifiIcon from "./svg/wifi.svg.js"
 
 const processors = [
     {
-        title: "Nvidia 4090",
+        title: "RTX 4090",
         costPerHour: 0.369,
         hashPerSecond: 2551000,
+    },
+    {
+        title: "8x RTX 4090",
+        costPerHour: 4.008,
+        hashPerSecond: 20408000,
     },
 ]
 const variations = [
@@ -51,7 +57,8 @@ const App = () => {
     const [password, setPassword] = useState("")
     const [modalClass, setModalClass] = useState("modal-wrapper")
     const [combinations, setCombinations] = useState(0)
-    const [error, setError] = useState("")
+    const [error, setError] = useState(false)
+    const [errorText, setErrorText] = useState("")
 
     useEffect(() => {
         document.querySelectorAll("a:not(.external)").forEach(link => {
@@ -61,12 +68,20 @@ const App = () => {
     }, [])
 
     useEffect(() => {
-        if (!/^[\x00-\x7F]{8,63}$/.test(password)) {
+        if (password.length < 8) {
             setCombinations(0)
-            setError("Password must be between 8-63 readable ASCII characters")
+            setTimeout(() => setErrorText(""), 300)
+            setError(false)
             return
         }
-        setError("")
+        if (!/^[\x00-\x7F]{8,63}$/.test(password)) {
+            setCombinations(0)
+            setErrorText("Password must be between 8-63 readable ASCII characters")
+            setError(true)
+            return
+        }
+        setError(false)
+        setTimeout(() => setErrorText(""), 300)
         setCombinations(Math.pow(calculateCombinations(), password.length))
         // eslint-disable-next-line
     }, [password])
@@ -111,12 +126,12 @@ const App = () => {
         const rawTime = parseInt(combinations / processor.hashPerSecond)
         const rawCost = rawTime / 60 / 60 * processor.costPerHour
 
-        if (combinations > 1e+27) {
+        if (rawTime < 10 && password.length > 8 && combinations > 0) {
             return {
                 rawTime: 0,
-                humanTime: "Infinity",
+                humanTime: "∞",
                 rawCost: 0,
-                humanCost: "All world money",
+                humanCost: "∞",
             }
         }
 
@@ -144,29 +159,33 @@ const App = () => {
     }
 
     return (
-        <>
-            <div className={"app"}>
-                <h1>How much your WiFi?</h1>
-
-                <h3>
+        <div className={"app"}>
+            <div className={"app-wrapper"}>
+                <div className={"title-wrapper"}>
+                    <WifiIcon width={64} height={64} />
+                    <h1>How much your WiFi?</h1>
+                </div>
+                <h4>
                     A WiFi password can`t be less than 8 characters, and in 2000 that seemed to be
                     enough. &quot;Today&quot; you can
                     find a password for almost any WiFi network for literally $100.
                     Enter your WiFi password to calculate how much money and time it would take for any child to access
                     your
                     WiFi network.
-                </h3>
-                <h4>
-                    IMPORTANT! We do not save or share your passwords, there are no counters, no adverts on this page,
-                    we do
-                    not track cookies and the source code of this project is completely open and available to anyone.
                 </h4>
+                <div className={"important"}>
+                    <h3>
+                        IMPORTANT! We do not save or share your passwords, there are no counters, no adverts on this page,
+                        we do
+                        not track cookies and the source code of this project is completely open and available to anyone.
+                    </h3>
+                </div>
                 <div className={"content"}>
                     <div className={["input-wrapper", error && "error"].join(" ")}>
-                        <div className={"error-wrapper"}>{error}</div>
+                        <div className={"error-wrapper"}>{errorText}</div>
                         <input
                             type={"password"}
-                            placeholder={"password"}
+                            placeholder={"Password"}
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                         />
@@ -176,7 +195,7 @@ const App = () => {
                         <tr>
                             <td>Processor</td>
                             <td width={"100%"}>Time</td>
-                            <td>Cost</td>
+                            <td className={"right"}>Cost</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -185,7 +204,7 @@ const App = () => {
                                     <tr key={processor.title}>
                                         <th>{processor.title}</th>
                                         <td>{timeAndMoney(processor).humanTime}</td>
-                                        <td>{timeAndMoney(processor).humanCost}</td>
+                                        <td className={"right"}>{timeAndMoney(processor).humanCost}</td>
                                     </tr>
                                 ),
                             )
@@ -193,9 +212,7 @@ const App = () => {
                         </tbody>
                     </table>
                     <p>
-                        Hackers can scale the hack in linear progression quite easily. In simple words -- the time taken
-                        to
-                        find a password can be reduced by the number of processors.
+                        Hackers can scale the hack fairly easily in&nbsp;an almost linear progression. In&nbsp;simple words&nbsp;&mdash; the time taken to&nbsp;find a&nbsp;password can be&nbsp;reduced by&nbsp;the number of&nbsp;processors.
                     </p>
                 </div>
                 <ul>
@@ -219,13 +236,15 @@ const App = () => {
                         pages.map(page => {
                             if (!page.component) return
                             return (
-                                <div className={"page"} key={page.url}>{page.component()}</div>
+                                <div className={"page"} key={page.url}>
+                                    <div className={"page-wrapper"}>{page.component()}</div>
+                                </div>
                             )
                         })
                     }
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

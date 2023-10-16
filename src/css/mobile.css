@@ -1,0 +1,41 @@
+@media only screen and (max-width: 600px) {
+    .title-wrapper {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    h1{
+        margin-top: 0;
+    }
+
+    h4{
+        display: none;
+    }
+
+    ul{
+        flex-direction: column;
+    }
+
+    ul a{
+        margin-top: 2px;
+    }
+
+    .input-wrapper {
+       margin-top: 50px;
+        padding: 2px;
+    }
+
+    .input-wrapper.error .error-wrapper {
+        transform: translateY(-50px);
+    }
+
+    .wifi-generator-wrapper{
+        flex-direction: column;
+    }
+    .wifi-generator-wrapper .qrcode {
+        margin-top: 20px;
+        margin-left: 0;
+        width: 100%;
+        align-self: center;
+    }
+}

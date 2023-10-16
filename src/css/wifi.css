@@ -1,0 +1,74 @@
+.wifi-generator {
+    background: #a2d2ff;
+    padding: 14px 20px;
+    margin-bottom: 20px;
+}
+
+.wifi-generator h3 {
+    margin: 0 0 20px;
+}
+
+.wifi-generator-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+.wifi-generator-wrapper .inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.wifi-generator-wrapper .inputs .input-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 10px;
+    border: 0;
+}
+
+.wifi-generator-wrapper .inputs .input-wrapper span {
+    width: 120px;
+    font-size: 1.3rem;
+}
+
+.wifi-generator-wrapper .inputs .input-wrapper input {
+    font-size: 2rem;
+    line-height: 2rem;
+    height: 36px;
+    border: 0;
+    flex: 1;
+    padding: 0 5px;
+}
+
+.wifi-generator-wrapper .inputs .input-wrapper button {
+    height: 36px;
+    width: 36px;
+    margin-left: 5px;
+    border: 1px solid #1d2d44;
+    background: #00000011;
+    border-radius: 4px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.wifi-generator-wrapper .inputs .input-wrapper button:active {
+    transform: translate(1px, 1px);
+}
+
+.wifi-generator-wrapper .qrcode {
+    display: flex;
+    margin-left: 20px;
+    min-width: 256px;
+    align-self: end;
+}
+
+.wifi-generator-wrapper .refresh-icon {
+    fill: #1d2d44;
+}
+
+.wifi-generator-wrapper .copy-icon {
+    stroke: #1d2d44;
+}

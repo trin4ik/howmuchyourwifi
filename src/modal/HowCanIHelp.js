@@ -10,9 +10,6 @@ export default () => (
         <p>
             If you&nbsp;re proficient in JavaScript, you&nbsp;re welcome to help the project with code.
         </p>
-        <p>
-            If&nbsp;you don't have time, but&nbsp;you&nbsp;still want to help the project, you&nbsp;can send us some crypto to&nbsp;the following wallets. The money will go to&nbsp;support this project, all &laquo;extra&raquo; will be transferred to&nbsp;foundations spreading the internet to&nbsp;hard to reach places:
-        </p>
         <ul>
             <li>Eth: 0x406CdC47b86552AEa272D224523d19657D825CeA</li>
             <li>Btc: bc1qrqrrj62hkdkugwukev9gy36555r8dfh4x3f292</li>
