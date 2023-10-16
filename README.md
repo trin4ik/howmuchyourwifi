@@ -14,4 +14,10 @@ As usual, the most vulnerable part in any system is the human being. WiFi can be
 
 Answer yourself this question, would you be willing to give this data to any passerby for $100? 
 
+## Todo
+- [x] WiFi QR generator
+- [ ] Move ReactJS -> VanillaJS (?)
+- [ ] i18l support
+- [ ] More manuals and information
+
 *Dedicated to the memory of Kevin Mitnick. Thank you, teacher. Your kung fu is the strongest.*
