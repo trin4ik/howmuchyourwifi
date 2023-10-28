@@ -58,7 +58,7 @@
     transform: translate(1px, 1px);
 }
 
-.wifi-generator-wrapper .qrcode {
+.wifi-generator-wrapper #qrcode {
     display: flex;
     margin-left: 20px;
     min-width: 256px;

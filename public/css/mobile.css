@@ -4,34 +4,39 @@
         margin-top: 10px;
     }
 
-    h1{
+    h1 {
         margin-top: 0;
     }
 
-    h4{
+    h4 {
         display: none;
     }
 
-    ul{
+    ul {
         flex-direction: column;
     }
 
-    ul a{
+    ul a {
         margin-top: 2px;
     }
 
     .input-wrapper {
-       margin-top: 50px;
+        margin-top: 50px;
         padding: 2px;
+    }
+
+    .input-wrapper input {
+        font-size: 2em;
     }
 
     .input-wrapper.error .error-wrapper {
         transform: translateY(-50px);
     }
 
-    .wifi-generator-wrapper{
+    .wifi-generator-wrapper {
         flex-direction: column;
     }
+
     .wifi-generator-wrapper .qrcode {
         margin-top: 20px;
         margin-left: 0;

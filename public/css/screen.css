@@ -6,7 +6,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background: #586F7C;
     margin: 10px;
-    padding:0;
+    padding: 0;
 }
 
 div.app {
@@ -17,7 +17,7 @@ div.app {
     justify-content: center;
 }
 
-div.app-wrapper{
+div.app-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,10 +54,11 @@ h4 {
 
 .important {
     padding: 10px;
-    background:#ffb703;
+    background: #ffb703;
     margin-top: 10px;
 }
-.important h3{
+
+.important h3 {
     margin-top: 0;
 }
 
@@ -76,7 +77,7 @@ div.content {
     position: relative;
     width: 100%;
     margin-bottom: 20px;
-    display:flex;
+    display: flex;
 }
 
 .input-wrapper .error-wrapper {
@@ -111,6 +112,10 @@ input {
     position: relative;
 }
 
+table {
+    width: 100%;
+}
+
 th {
     white-space: nowrap;
 }
@@ -118,6 +123,19 @@ th {
 td, th {
     padding: 10px;
     text-align: left;
+}
+
+td:nth-child(1), th:nth-child(1) {
+    white-space: nowrap;
+}
+
+td:nth-child(2), th:nth-child(2) {
+    width: 100%;
+}
+
+td:nth-child(3), th:nth-child(3) {
+    text-align: right;
+    white-space: nowrap;
 }
 
 td.right, th.right {
@@ -164,22 +182,29 @@ ul a:hover {
     top: 0;
     left: 0;
     right: 0;
-    overflow: hidden;
-    display: none;
+    bottom: 0;
+    overflow: auto;
     background: #fff;
-    min-height: 100vh;
     z-index: 2;
+    opacity: 0;
+    transform: translateY(-100vh);
+    transition: .3s ease all;
 }
 
 .modal-wrapper.open {
-    display: block;
+    opacity: 1;
+    transform: translateY(0vh);
 }
 
 .modal {
-    display: flex;
-    width: calc(100vw * 4);
+    display: none;
+    width: 100vw;
     background: #fff;
     transition: .3s ease all;
+}
+
+.modal.open {
+    display: flex;
 }
 
 .modal-wrapper .close {
@@ -212,7 +237,7 @@ ul a:hover {
     display: flex;
 }
 
-.modal .page .page-wrapper{
+.modal .page .page-wrapper {
     max-width: 1000px;
 }
 
@@ -231,8 +256,9 @@ ul a:hover {
     opacity: .6;
     padding: 20px 0 0;
     margin: 0;
-    font-size:.8rem;
+    font-size: .8rem;
 }
-.modal .page ul li{
+
+.modal .page ul li {
     max-width: 80vw;
 }

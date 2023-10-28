@@ -1,43 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=.8, maximum-scale=.8, user-scalable=no" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'"/>
+    <link rel="icon" href="/img/wifi.svg" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=.8, maximum-scale=.8, user-scalable=no"/>
+    <meta name="description" content="How much your WiFi? Problem with WiFi, WPA2, and what can we do"/>
+    <title>How much your WiFi?</title>
+    <script src="/js/index.js"></script>
+    <script src="/js/qrcode.min.js"></script>
+    <link rel="stylesheet" href="/css/index.css"/>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div class="app">
+    <div class="app-wrapper">
+        <div class="title-wrapper">
+            <img alt="wifi" src="/img/wifi.svg" width="64" height="64"/>
+            <h1>How much your WiFi?</h1>
+        </div>
+        <h4>
+            A WiFi password can`t be less than 8 characters, and in 2000 that seemed to be
+            enough. &quot;Today&quot; you can
+            find a password for almost any WiFi network for literally $100.
+            Enter your WiFi password to calculate how much money and time it would take for any child to access
+            your
+            WiFi network.
+        </h4>
+        <div class="important">
+            <h3>
+                IMPORTANT! We do not save or share your passwords, there are no counters, no adverts on this page,
+                we do
+                not track cookies and the source code of this project is completely open and available to anyone.
+            </h3>
+        </div>
+        <div class="content">
+            <div class="input-wrapper">
+                <div class="error-wrapper"></div>
+                <input type="password" name="password" placeholder="Password"/>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <td>Processor</td>
+                    <td>Time</td>
+                    <td>Cost</td>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <p>
+                Hackers can scale the hack fairly easily in&nbsp;an almost linear progression. In&nbsp;simple words&nbsp;&mdash;
+                the time taken to&nbsp;find a&nbsp;password can be&nbsp;reduced by&nbsp;the number of&nbsp;processors.
+            </p>
+        </div>
+        <ul class="links">
+            <li><a href="/how-it-work">How it work?</a></li>
+            <li><a href="/why-its-important">Why it`s important?</a></li>
+            <li><a href="/what-can-i-do">What can i do?</a></li>
+            <li><a href="https://github.com/trin4ik/howmuchyourwifi" target="_blank">Github</a></li>
+            <li><a href="/how-can-i-help">How can i help?</a></li>
+        </ul>
+    </div>
+    <div class="modal-wrapper">
+        <a class="close" href="/">X</a>
+        <div class="modal" data-id="how-it-work">
+            <div class="page">
+                <div class="page-wrapper">
+                    <h1>How it work?</h1>
+                    <p>
+                        WiFi radio airwaves are available to any user, however, to secure networks, the WPA (Wi-Fi
+                        Protected Access) standard was developed, at&nbsp;the current relevant standard is WPA3.
+                    </p>
+                    <p>
+                        WPA allows you to set a password on&nbsp;a WiFi network, to put it crudely, this password is a
+                        cipher for all WiFi traffic within the channel for this network. This means that hackers can
+                        still intercept network traffic, but without the password they cannot decrypt it.
+                    </p>
+                    <p>
+                        When initialising a connection with&nbsp;the correct password, WPA provides for the exchange of
+                        private keys with&nbsp;the user, this is called a handshake. By intercepting the handshake, a
+                        hacker can &laquo;pick&nbsp;the password from&nbsp;its cast. To put it simply and&nbsp;crudely,
+                        there is no password in&nbsp;a handshake, there is its shadow. It is impossible to determine a
+                        password from&nbsp;the shadow, however, it is quite easy to get the shadow from&nbsp;any
+                        password. A hacker gets the shadow from&nbsp;the password 12345678 and&nbsp;compares it&nbsp;with&nbsp;the
+                        shadow he&nbsp;got from&nbsp;the handshake. If your&nbsp;WiFi password is 12345678, then&nbsp;the
+                        shadows will match.
+                    </p>
+                    <p>
+                        Thus, hackers can &laquo;pick&raquo; passwords by simple brute force, i.e. get shadows from&nbsp;00000000,
+                        00000001, 00000002, etc. This kind of attack is called bruteforce.
+                    </p>
+                    <p>
+                        As is not&nbsp;difficult to guess, the longer the password, the harder it is to&laquo;pick&raquo;.
+                        That is why in&nbsp;2000&nbsp;year, when the WPA format was developed, its founders set a
+                        restriction&nbsp;&mdash; the password must be at least 8 characters long. At the time, it seemed
+                        to be a permanent defence against&nbsp;picking. But&nbsp;&laquo;then&raquo;, these are the times
+                        where Intel's flagship was a single-core Pentium III 866Mhz. Modern GPUs like Nvidia 4090 are
+                        thousands of times more powerful, and&nbsp;picking a password of even&nbsp;8 characters is not&nbsp;such
+                        a difficult task anymore.
+                    </p>
+                    <p>
+                        By intercepting a handshake, and&nbsp;for this hacker just needs to be close to&nbsp;your
+                        network (for example, it can be a neighbour's child), most often the hacker is able to &laquo;pick&raquo;
+                        your password, spending only $100.
+                    </p>
+                    <p>
+                        <a href="/why-its-important">Why it`s important?</a>
+                    </p>
+                </div>
+            </div>
+        </div>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+        <div class="modal" data-id="why-its-important">
+            <div class="page">
+                <div class="page-wrapper">
+                    <h1>Why it`s important?</h1>
+                    <p>
+                        Someone will say: &laquo;I&nbsp;am&nbsp;not&nbsp;greedy. If a neighbour's child is so advanced
+                        that he can launch such an attack&nbsp;&mdash; I&nbsp;ll&nbsp;be happy for&nbsp;him&raquo;. And&nbsp;what
+                        if I&nbsp;tell you that having a password from&nbsp;your network, a neighbour's child can not&nbsp;only
+                        communicate with&nbsp;terrorists from&nbsp;your network, for example, but&nbsp;also&nbsp;intercept
+                        all your traffic? In&nbsp;the https era, of course, this is not&nbsp;very relevant, but&nbsp;only
+                        on&nbsp;the&nbsp;side. For example, it&nbsp;won&nbsp;t&nbsp;be able to read your correspondence
+                        in&nbsp;mail or Facebook, however, it&nbsp;will&nbsp;be able to detect your porn sites,
+                        calculate with&nbsp;accuracy up to&nbsp;a byte how much traffic and&nbsp;time you&nbsp;spend on&nbsp;YouTube,
+                        will be able to see your VPN connections and so on.
+                    </p>
+                    <p>
+                        Moreover, you&nbsp;can set yourself a 12-character password (which is not&nbsp;quite right, more
+                        details in&nbsp;the next article) with&nbsp;a lot of special characters, which&nbsp;would take
+                        many thousands of years to&nbsp;find at current capacities. But&nbsp;you&nbsp;are&nbsp;completely
+                        calmly entering passwords from&nbsp;&laquo;public&raquo; networks. Say, for example, a hotel has
+                        a simple password 12345678, you&nbsp;enter it without a second thought and&nbsp;forget about&nbsp;the
+                        fact that any of the&nbsp;guests of this hotel, knowing the password, can intercept and&nbsp;decrypt
+                        your traffic. Again&nbsp;if you&nbsp;use https, a hacker will not&nbsp;be able to read your
+                        correspondence or find out what pornographic film you&nbsp;watched last night before going to
+                        bed, but&nbsp;he&nbsp;will&nbsp;know exactly what resources you&nbsp;ve visited and&nbsp;how
+                        much time/traffic you&nbsp;ve spent on&nbsp;them.
+                    </p>
+                    <p>
+                        You&nbsp;re&nbsp;unlikely to&nbsp;be&nbsp;thrilled&nbsp;that any&nbsp;essentially passerby will
+                        be able to know exactly what resources you&nbsp;re visiting + will be able to use your internet.
+                        If it's the neighbour's kid and&nbsp;he&nbsp;s just doing it for fun, that's nice. But&nbsp;what
+                        if your network is being used for illegal operations? What if there's a knock on YOUR door
+                        tomorrow asking why you&nbsp;ve been downloading child pornography?
+                    </p>
+                    <p>
+                        Someone will say: &laquo;Yes&nbsp;Who needs me? Yes&nbsp;who will bother? &raquo;. Firstly, you
+                        need ) otherwise&nbsp;Facebook, Google and&nbsp;Apple would not&nbsp;collect&nbsp;all
+                        information about&nbsp;you by&nbsp;bits and pieces. Secondly, in&nbsp;2022, the most populous
+                        altcoin, Etherium, switched from&nbsp;proof-of-works to&nbsp;proof-of-stake. If you&nbsp;didn&nbsp;t&nbsp;understand
+                        a&nbsp;word in&nbsp;the&nbsp;last sentence, just imagine that &laquo;miners&raquo; used to earn
+                        money from&nbsp;video cards, and&nbsp;now they&nbsp;ve been completely deprived of that income.
+                        On&nbsp;the main page I&nbsp;m&nbsp;providing calculations for&nbsp;one nvidia 4090 graphics
+                        card, but&nbsp;now imagine that millions of the most powerful graphics cards around&nbsp;the
+                        world a year ago lost&laquo;earnings&raquo; and&nbsp;are hanging around doing nothing.
+                    </p>
+                    <p>
+                        <a href="/what-can-i-do">What can i do?</a>
+                    </p>
+                </div>
+            </div>
+        </div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+        <div class="modal" data-id="what-can-i-do">
+            <div class="page">
+                <div class="page-wrapper">
+                    <h1>What can i do?</h1>
+                    <p>
+                        Sorry if we&nbsp;ve scared you. In fact, it is not&nbsp;all so sad, and&nbsp;it is possible to
+                        be quite safe inside your WiFi network and&nbsp;&laquo;invisible&raquo; in&nbsp;the public one.
+                    </p>
+                    <h3>Rule 1</h3>
+                    <p>
+                        Forget about&nbsp;WiFi passwords, you don&nbsp;t need them anymore. All you need to do is to
+                        generate 1&nbsp;times a password with a length of 63&nbsp;characters (this is the maximum value
+                        for a password in&nbsp;WPA), including ASCII special characters that are not present on the&nbsp;keyboard,
+                        and&nbsp;generate a QR code for your network. All modern smartphones can read&nbsp;QR codes, you
+                        will only need to take a picture of&nbsp;QR code or print it to &laquo;share&nbsp;it.
+                    </p>
+                    <p>
+                        In own WiFi network you can switch router to WPA2/WPA3 security mode (if your router can this).
+                        It won't guarantee safety, but it can secure modern devices.
+                    </p>
+                    <div class="wifi-generator">
+                        <div class="wifi-generator-wrapper">
+                            <div>
+                                <h3>WiFi QR generator</h3>
+                                <p>
+                                    Enter SSID (WiFi network name) and couple of time regenerate password. Copy password
+                                    and change on your
+                                    router. Make photo of QR code and save it to favorite. Now, when you need to share
+                                    your password with
+                                    your family or friends, just share it via the standard iOS/Android tools, or show
+                                    them the QR code.
+                                </p>
+                                <p>For old, IoT or TV devices, use different network, most modern routers can do
+                                    this.</p>
+                                <div class="inputs">
+                                    <div class="input-wrapper">
+                                        <span>SSID:</span>
+                                        <input name="ssid" placeholder="WiFi name"/>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <span>Password:</span>
+                                        <input name="password" readonly/>
+                                        <button class="refresh-button">
+                                            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="30"
+                                                 height="30">
+                                                <path class="refresh-icon"
+                                                      d="m35.3 12.7c-2.89-2.9-6.88-4.7-11.3-4.7-8.84 0-15.98 7.16-15.98 16s7.14 16 15.98 16c7.45 0 13.69-5.1 15.46-12h-4.16c-1.65 4.66-6.07 8-11.3 8-6.63 0-12-5.37-12-12s5.37-12 12-12c3.31 0 6.28 1.38 8.45 3.55l-6.45 6.45h14v-14l-4.7 4.7z"></path>
+                                                <path d="m0 0h48v48h-48z" fill="none"></path>
+                                            </svg>
+                                        </button>
+                                        <button class="copy-button">
+                                            <svg width="30" height="30" viewBox="0 0 64 64"
+                                                 xmlns="http://www.w3.org/2000/svg" stroke-width="3" stroke="#000000"
+                                                 fill="none">
+                                                <rect x="11.13" y="17.72" width="33.92" height="36.85" rx="2.5"
+                                                      class="copy-icon"></rect>
+                                                <path class="copy-icon"
+                                                      d="M19.35,14.23V13.09a3.51,3.51,0,0,1,3.33-3.66H49.54a3.51,3.51,0,0,1,3.33,3.66V42.62a3.51,3.51,0,0,1-3.33,3.66H48.39"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="qrcode"></div>
+                        </div>
+                    </div>
+                    <h3>Rule 2</h3>
+                    <p>
+                        Use WiFi networks outside your home (outside your network)&nbsp;&mdash; only via VPN. Many
+                        modern routers are able to create a VPN server, so&nbsp;it&nbsp;s not&nbsp;difficult to do if&nbsp;you
+                        have a stationary computer at home, which is always switched on and&nbsp;always in&nbsp;the
+                        network. It&nbsp;can be a single-board computer like RaspberryPI, which&nbsp;costs inexpensive
+                        and&nbsp;takes up no&nbsp;space. You should make it a&nbsp;rule to use the Internet via WiFi
+                        only via VPN from&nbsp;your home. Any passerby and&nbsp;hotel guest will still be able to
+                        intercept your traffic, knowing the hotel password, but for them it will be encrypted VPN
+                        traffic, which will definitely be useless without access to&nbsp;your VPN.
+                    </p>
+                    <p>
+                        I&nbsp;ve got it all figured out! Thank you! <a href="/how-can-i-help">It seems I&nbsp;d like to
+                        help the project, how can I&nbsp;do it?</a>
+                    </p>
+                </div>
+            </div>
+        </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+        <div class="modal" data-id="how-can-i-help">
+            <div class="page">
+                <div class="page-wrapper">
+                    <h1>How can i help?</h1>
+                    <p>
+                        The aim of the project is to make the Internet safer. In&nbsp;the modern world, WiFi is the main
+                        provider of the Internet, and&nbsp;we, the development team, understand both&nbsp;the problem
+                        and&nbsp;ways to&nbsp;solve it.
+                    </p>
+                    <p>
+                        If you&nbsp;want to help the project, we&nbsp;could really use your language skills ) We&nbsp;want
+                        to translate this project into&nbsp;as many languages as possible, so that everyone knows about&nbsp;WiFi
+                        security.
+                    </p>
+                    <p>
+                        If you&nbsp;re proficient in JavaScript, you&nbsp;re welcome to help the project with code.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>
