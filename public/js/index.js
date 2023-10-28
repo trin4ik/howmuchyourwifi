@@ -236,5 +236,6 @@ const howmuchyourwifi = () => {
     fillProcessors()
     initEvents()
     generateQrPassword()
+    goToPage(window.location.pathname.slice(1) ?? '')
 }
 document.addEventListener("DOMContentLoaded", howmuchyourwifi)
