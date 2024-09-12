@@ -1,15 +1,16 @@
 const howmuchyourwifi = () => {
+    // cloud.vast.ai
     const processors = [
         {
             id: "rtx-4090",
             title: "RTX 4090",
-            costPerHour: 0.369,
+            costPerHour: 0.303,
             hashPerSecond: 2551000,
         },
         {
             id: "8x-rtx-4090",
             title: "8x RTX 4090",
-            costPerHour: 4.008,
+            costPerHour: 3.203,
             hashPerSecond: 20408000,
         },
     ]
@@ -131,8 +132,7 @@ const howmuchyourwifi = () => {
 
     const handleClickLink = event => {
         const url = new URL(event.target.href)
-        if (!["localhost", "10.9.2.200", "howmuchyourwifi.com"].includes(url.hostname)) return
-
+        if (url.hostname === 'github.com') return
         event.preventDefault()
         history.pushState({ url: url.pathname }, "", url)
         goToPage(url.pathname.slice(1))
@@ -185,6 +185,7 @@ const howmuchyourwifi = () => {
     }
 
     const goToPage = page => {
+        console.log('page', page)
         const $ = document.querySelector(".modal-wrapper")
         if (page === "" || !$.querySelector(".modal[data-id=\"" + page + "\"]")) {
             $.classList.remove("open")
@@ -233,9 +234,16 @@ const howmuchyourwifi = () => {
         }
     }
 
+    const checkAnchor = () => {
+        if (window.location.hash && window.location.hash.startsWith('#/howmuchyourwifi')) {
+            history.pushState({ url: window.location.hash.slice(2) }, "", window.location.hash.slice(1))
+            goToPage(window.location.pathname.slice(1))
+        }
+    }
+
+    checkAnchor()
     fillProcessors()
     initEvents()
     generateQrPassword()
-    goToPage(window.location.pathname.slice(1) ?? '')
 }
 document.addEventListener("DOMContentLoaded", howmuchyourwifi)
