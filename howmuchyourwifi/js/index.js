@@ -185,7 +185,6 @@ const howmuchyourwifi = () => {
     }
 
     const goToPage = page => {
-        console.log('page', page)
         const $ = document.querySelector(".modal-wrapper")
         if (page === "" || !$.querySelector(".modal[data-id=\"" + page + "\"]")) {
             $.classList.remove("open")
