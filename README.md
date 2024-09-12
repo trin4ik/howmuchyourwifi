@@ -17,6 +17,7 @@ Answer yourself this question, would you be willing to give this data to any pas
 ## Todo
 - [x] WiFi QR generator
 - [x] Move ReactJS -> VanillaJS (?)
+- [x] Move to github pages
 - [ ] i18l support
 - [ ] More manuals and information
 - [ ] Move VanillaJS -> Web-components (?)
