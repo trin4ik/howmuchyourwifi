@@ -2,16 +2,16 @@ const howmuchyourwifi = () => {
     // cloud.vast.ai
     const processors = [
         {
-            id: "rtx-4090",
-            title: "RTX 4090",
-            costPerHour: 0.303,
-            hashPerSecond: 2551000,
+            id: "rtx-590",
+            title: "RTX 5090",
+            costPerHour: 0.392,
+            hashPerSecond: 3409100,
         },
         {
-            id: "8x-rtx-4090",
-            title: "8x RTX 4090",
-            costPerHour: 3.203,
-            hashPerSecond: 20408000,
+            id: "8x-rtx-5090",
+            title: "8x RTX 5090",
+            costPerHour: 3.740,
+            hashPerSecond: 27272800,
         },
     ]
     const variations = [
